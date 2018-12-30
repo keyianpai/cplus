@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1545991452 source:d:\documents\share\cplus\py\main.c
+	<stdio.h>
+	<stdlib.h>
+	<Python.h>
+
+1545992163 source:d:\documents\share\cplus\py\system.c
+	<stdio.h>
+	<string.h>
+
