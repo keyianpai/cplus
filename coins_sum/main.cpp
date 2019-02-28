@@ -27,7 +27,7 @@ int knapsack(vector<int> weights,vector<int> values,int space){
                 if(weights[i-1]<j){
                     dp[i][j] = min(dp[i-1][j-weights[i-1]] + values[i-1],dp[i-1][j]);
                 }else{
-                    dp[i][j] = dp[i-1][j]
+                    dp[i][j] = dp[i-1][j];
                 }
 
         }
