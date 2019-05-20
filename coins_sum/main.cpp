@@ -6,7 +6,7 @@ int coins_sum(int* coins,int n,int amount){
         sum[0] = 0;
         for(int i =1;i<=amount;i++){
                 sum[i] = -1;
-                for(int j=0;j<n;j++){
+                for(int j=0;j<n;j++){// coin 0,1,,,,n-1
                     if(coins[j]<=i&&sum[i-coins[j]]!=-1)
                         if(sum[i]==-1||sum[i-coins[j]]+1<sum[i])
                                  sum[i] = sum[i-coins[j]]+1;
@@ -24,14 +24,15 @@ int knapsack(vector<int> weights,vector<int> values,int space){
         for(int j=0;j<=space;j++){
                 if(i==0||j==0)
                     dp[i][j] = 0;
-                if(weights[i-1]<j){
-                    dp[i][j] = min(dp[i-1][j-weights[i-1]] + values[i-1],dp[i-1][j]);
+                else if(weights[i-1]<=j){//<=,,,else if
+                    dp[i][j] = max(dp[i-1][j-weights[i-1]] + values[i-1],dp[i-1][j]);//max£¡£¡£¡
                 }else{
                     dp[i][j] = dp[i-1][j];
                 }
 
         }
     }
+    return dp[weights_s][space];
 
 
 }
@@ -48,4 +49,5 @@ int main()
     printf("%d",ans);
     cout << "Hello world!" << endl;
     return 0;
+    //good  teamviewer
 }
