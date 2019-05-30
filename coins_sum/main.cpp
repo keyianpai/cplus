@@ -54,6 +54,7 @@ int a , b;
 cout<<"a,b before input:"<<endl;
 cout<<a<<'	'<<b<<endl;
 cin>>a>>b;
+cout<<"a,b after input:"<<endl;
 cout<<a<<'	'<<b<<endl;
 }
 void cin2iignore(){
