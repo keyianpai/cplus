@@ -200,7 +200,8 @@ int main()
     //scanf2ispacecomma();
     //scanf2icommaspace();//第一个数字紧跟comma
     //scanfcomma2i();
-    scanfspacecomma2i();
+    cinhexoct1();
+    //scanfspacecomma2i();
     return 0;
     //good  teamviewer
 }
