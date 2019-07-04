@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <memory>//auto_ptr
 using namespace std;
 int coins_sum(int* coins,int n,int amount){
         int sum[amount+1];//=0
@@ -46,6 +48,31 @@ void cinhexoct1(){
     cin>>hex>>c;
     cout<<a<<'	'<<b<<' '<<c<<endl;
     //cout<<a<<'	'<<b<<endl;
+    /** \brief
+     *
+     * \param
+     * \param
+     * \return
+     *
+     float f;
+	printf("**************************\n");
+	printf("dotcpp.com\n");
+	printf("**************************\n");
+	scanf("%4f",&f);
+	printf("%f",f);
+	int d=-12;
+    float b=-3.1415;
+    char c='A';
+    printf("%d\n",a);
+    printf("o%o\n",a);
+    cout<<a<<endl;
+    printf("0x%x\n",a);
+    cout<<a<<endl;
+    printf("%3.2f\n",b);
+    printf("%c\n",c);
+
+     */
+
 
 
 }
@@ -157,8 +184,107 @@ string a , b;
 cin>>a>>b;
 cout<<a<<'	'<<b<<endl;
 }
+void staticlocal(){
+static int a;
+int b;
+cout<<"static int a:  "<<a<<"int b:  "<<b<<endl;
+}
+
+void autoptr(){
+auto_ptr<string> p1 (new string("hello."));
+//unique_ptr<string> p1 (new string("hello."));
+cout<<*p1<<endl;
+auto_ptr<string> p2 = p1;
+cout<<*p2<<endl;
+//cout<<*p1<<endl;//wrong when run
+}
+
+void uniqueptr(){
+unique_ptr<string> p1 (new string("hello."));
+cout<<*p1<<endl;
+//unique_ptr<string> p2 = p1; // wrong compile
+//cout<<*p2<<endl;
+//cout<<*p1<<endl;//wrong when run
+}
+
+void sharedptr(){
+shared_ptr<string> p1 (new string("hello."));
+cout<<"p1.unique():  "<<p1.unique()<<endl;
+cout<<"p1.use_count():  "<<p1.use_count()<<endl;
+cout<<*p1<<endl;
+shared_ptr<string> p2 = p1; // wrong compile
+cout<<"p1.unique():  "<<p1.unique()<<endl;
+cout<<"p1.use_count():  "<<p1.use_count()<<endl;
+cout<<"p2.use_count():  "<<p2.use_count()<<endl;
+p1.reset();
+cout<<"p1 reset, p2.use_count():  "<<p2.use_count()<<endl;//1
+cout<<"p1 reset, p1.use_count():  "<<p1.use_count()<<endl;//0
+
+cout<<*p2<<endl;
+//cout<<*p1<<endl;//wrong after p1 reset
+}
+class A{
+int a;
+public:
+A(){
+cout<<"A constructing..."<<endl;
+  }
+  void fun(int a){// non const obj a use nonconst or const
+      cout<<"A's fun..."<<endl;
+  };
+  /** \brief
+   *
+   * \param a int
+   * \return int
+   *
+   int fun(int a){
+  return 1;};// wrong with different return
+   */
+   //void fun(const int a){ const int can't
+  //};
+  void fun(const int a)const{ //const obj a only use const
+     cout<<"A's const fun..."<<endl;
+  };
+   void fun(const int a,int b){
+  };
+   void fun(const int a,int b)const{//without const can't reload
+  };
 
 
+};
+
+void constfun(){
+    A a;
+    a.fun(1);
+    const A b;
+    b.fun(1);
+    }
+//A a;// exe before main
+//a.fun(1); //wrong outside
+
+void constcast(){
+const int constant = 26;//without const, will change to 3 later
+    const int* const_p = &constant;
+    //*const_p = 4; // wrong
+    //int mod = const_cast<int>(constant);//invalid use of const_cast with type 'int', which is not a pointer, reference, nor a pointer-to-data-member type
+    int* modifier = const_cast<int*>(const_p);
+    *modifier = 3;
+    cout<< "constant:  "<<constant<<endl;
+    cout<<"*modifier:  "<<*modifier<<endl;
+    //system("pause");
+}
+void InputInt(int * num)
+{
+    cout<<*num<<endl;
+}
+void removeconst(){
+    const int constant = 21;
+    //InputInt(&constant); //error C2664: “InputInt”: 不能将参数 1 从“const int*”转换为“int *”
+    int* a =const_cast<int*>(&constant);
+    cout<< "int* a =const_cast<int*>(&constant),*a: "<<*a<<endl;
+    InputInt(a);
+    system("pause");
+}
 int main()
 {   //int coins[2]={2,2} ;
     //coins[0]=2,coins[1]=3;
@@ -200,8 +326,17 @@ int main()
     //scanf2ispacecomma();
     //scanf2icommaspace();//第一个数字紧跟comma
     //scanfcomma2i();
-    cinhexoct1();
+    //cinhexoct1();
     //scanfspacecomma2i();
-    return 0;
+
+    //staticlocal();
+    //autoptr();
+    //uniqueptr();
+    //sharedptr();
+    //for(int i = 0; i < 20; i--) cout << "hello" << endl;//< to +
+    //constfun();
+    constcast();
+    //removeconst();
+return 0;
     //good  teamviewer
 }
