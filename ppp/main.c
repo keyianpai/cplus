@@ -12,29 +12,24 @@ void print_permutation(int n,int* A,int cur){
             }
             printf("\n");
 
-    }else{
-        for(i=0;i<n;i++){
+    }
+	else{
+        for(i=0;i<n;i++){//i从0到n，试探当前cur位置可不可以等于i，可以，递归cur+1，否则跳过此轮循环
                 int repeat = 0;
                 for(j=0;j<cur;j++){
-                if(A[j] == i){
-                    repeat = 1;
-                    break;
+                    if(A[j] == i){
+                        repeat = 1;
+                        break;
+                    }
                 }
-
-            }
             if (repeat == 0){
                 A[cur] = i;
                 cur++;
                 print_permutation(n,A,cur);
                 cur--;//ATTENTION!!!!WRONG AGAIN!
             }
-
-
-
-
-            }
-
-    }
+        }
+    }//else
 }
 void str_period(char* s){
     int len;
