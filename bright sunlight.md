@@ -9,7 +9,20 @@ $ F_0(x) = \underset{\gamma}{\arg\min} {\sum_{i=1}^n {L(y_i, \gamma)}}$
 $ F_m(x) = F_{m-1}(x) + \underset{h_m \in \mathcal{H}}{\operatorname{arg\,min}} \left[{\sum_{i=1}^n {L(y_i, F_{m-1}(x_i) + h_m(x_i))}}\right]$ 
 
 $ F_m(x) = F_{m-1}(x) - \gamma_m \sum_{i=1}^n {\nabla_{F_{m-1}} L(y_i, F_{m-1}(x_i))},$ 
+$$
+\forall k=0,1, \quad \mu_k = \sum_{i=1}^{n_k} p_{k,i} \delta_{x_{k,i}}
+$$
 
+$$
+X_k = ( x_{k,i} )_{i=1}^{n_i} \subset \R^d
+$$
+
+
+$$
+\mathcal{P} = \enscond{ (\gamma_{i,j})_{i,j} \in (\RR^+)^{n_0 \times n_1} }{
+     \forall i, \sum_j \ga_{i,j} = p_{0,i}, \:
+     \forall j, \sum_i \ga_{i,j} = p_{1,j} }
+$$
 In the bright sunlight, he caught sight of a terrific shadow/outline of a figure whom he didn't expect to be Yang, his dream girl. And actually he didn't even immediately recognize her at the first sight.
 
 Looking at his left elbow, he saw that there was a big worm enjoying his fresh blood silently, but he didn't squeeze the greedy devil's big belly before it was full and stopped. 
@@ -57,6 +70,14 @@ I felt a thrill of fear for the little girl when I heard "systematic" plans from
 My mother is surely kind to me, but I had seen a miserable peer who rarely came out to play with us.
 
 Thanks.By the way, what's the story behind your profile picture, the person i liked secretly has the same one.
+
+2019年11月28日13:09:23
+
+I beat my laziness in a stage-wise fashion like many other anti-procrastination books suggest, and I practice them by doing one thing that is only a little beyond my comfortzone at a time without thinking too much and controlling my distraction intentionally.  
+
+2019年11月28日19:59:29
+
+ 2019-11   IEEEBIBM 2019 Award Committee Chairs  Best Student Paper 
 
 ```c++
 *1
