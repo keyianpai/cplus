@@ -1,3 +1,7 @@
+```
+
+```
+
 bright sunlight
 
 $ h_m \in \mathcal{H} $ 
@@ -80,81 +84,6 @@ I beat my laziness in a stage-wise fashion like many other anti-procrastination 
  2019-11   IEEEBIBM 2019 Award Committee Chairs  Best Student Paper 
 
 ```c++
-*1
-* Copyright(c) 2019 Jiau Zhang
-* For more information see <https://github.com/JiauZhang/algorithms>
-* 
-* This repo is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation
-*
-* It is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with THIS repo. If not, see <http://www.gnu.org/licenses/>.
-*/
-
-/*
-* https://leetcode-cn.com/problems/symmetric-tree
-* 题目描述：
-*     给定一个二叉树，检查它是否是镜像对称的。
-*     例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
-*         1
-*        / \
-*       2   2
-*      / \ / \
-*     3  4 4  3
-* 
-*     但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
-*         1
-*        / \
-*       2   2
-*        \   \
-*        3    3
-* 
-* 解题思路：
-*     因为是要判断树是否是对称的，首先判断两个树是否相等的问题
-*     可以分为根节点、左子树、右子树的问题来解决
-*     同样的，判断是否是对称树，我们可以按照相反的次序来解决这个问题
-*     同样按照根节点、左子树、右子树的思路做，不同的是，我们访问的
-*     都是同一棵树，并且用一棵树的左子树与一棵树的右子树进行比较
-*     这样就好比做了一次对称，如果他们完全相同，那么这个树就是对称的
-*/
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-    bool isSymmetric(TreeNode* root) {
-        return do_symmetric(root, root);
-    }
-
-    bool do_symmetric(TreeNode *left, TreeNode *right) {
-        if (left == NULL && right == NULL)
-            return true;
-        if (left == NULL || right == NULL)
-            return false;
-
-        bool res = (left->val == right->val);
-        if (!res)
-            return false;
-        res = do_symmetric(left->left, right->right);
-        if (!res)
-            return false;
-        res = do_symmetric(left->right, right->left);
-        return res;
-    }
-};
 
 //binary-tree-level-order-traversal
 /**2
@@ -198,24 +127,7 @@ public:
     }
 };
 
-/*3
-* Copyright(c) 2019 Jiau Zhang
-* For more information see <https://github.com/JiauZhang/algorithms>
-* 
-* This repo is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation
-*
-* It is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with THIS repo. If not, see <http://www.gnu.org/licenses/>.
-*/
 
-/*
 * https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii
 * 题目描述：
 *     给定一个二叉树，返回其节点值自底向上的层次遍历。
@@ -290,21 +202,6 @@ public:
 
 /*4
 //minimum-depth-of-binary-tree
-* Copyright(c) 2019 Jiau Zhang
-* For more information see <https://github.com/JiauZhang/algorithms>
-* 
-* This repo is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation
-*
-* It is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with THIS repo. If not, see <http://www.gnu.org/licenses/>.
-*/
 
 /*
 * https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
@@ -751,50 +648,30 @@ public:
     }
 };
 
-/*12
-* https://leetcode-cn.com/problems/plus-one
-* 题目描述：
-* 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
-* 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
-* 你可以假设除了整数 0 之外，这个整数不会以零开头。
-* 
-* 示例 1:
-*     输入: [1,2,3]
-*     输出: [1,2,4]
-*     解释: 输入数组表示数字 123。
-* 
-* 示例 2:
-*     输入: [4,3,2,1]
-*     输出: [4,3,2,2]
-*     解释: 输入数组表示数字 4321。
-* 
-* 解题思路：
-*     1. 由于是加一操作，所以只需要考虑当前位是否需要进位即可
-*        即当前位是否为 9，如果不是直接加一结束
-*     2. 如果是就把当前位置零，继续下一个加一操作，如此循环
-*/
-
-class Solution {
-public:
-    vector<int> plusOne(vector<int>& digits) {
-        int head = digits[0];
-        for (int i=digits.size()-1; i>=0; i--) {
-            if (digits[i] == 9) {
-                digits[i] = 0;
-            } else {
-                digits[i]++;
-                break;
-            }
-        }
-
-        if (head > digits[0]) {
-            vector<int> res = {1};
-            res.insert(res.end(), digits.begin(), digits.end());
-            return res;
-        } else {
-           return digits;
-        }
-    }
-};
 ```
 
+ll
+
+```python
+# -*- coding:utf-8 -*-
+class Solution:
+    def minNumberInRotateArray(self, rArr):
+        if not rArr:
+            return 0
+        low,hi = 0,len(rArr)-1
+        while low<hi :
+            mid = low + (hi-low)/2
+            if rArr[mid]<rArr[hi]:
+                hi = mid
+            elif rArr[mid]>rArr[hi]:
+                low = mid +1
+            else:
+                hi-=1
+        return rArr[low]
+        
+        # write code here
+```
+
+
+
+ll
